@@ -245,11 +245,11 @@ float get_dissolved_oxygen()
         analogBufferTemp[copyIndex]= analogBuffer[copyIndex];
       }
       averageVoltage = getMedianNum(analogBufferTemp,SCOUNT) * (float)VREF / 1024.0; // read the value more stable by the median filtering algorithm
-
-      doValue = pgm_read_float_near( &SaturationValueTab[0] + (int)(SaturationDoTemperature+0.5) ) * averageVoltage / SaturationDoVoltage;  //calculate the do value, doValue = Voltage / SaturationDoVoltage * SaturationDoValue(with temperature compensation)
-//      Serial.print(F("DO Value:"));
-//      Serial.print(doValue,2);
-//      Serial.println(F("mg/L"));
+      doValue = averageVoltage;
+      //temp palok 28 Apr//doValue = pgm_read_float_near( &SaturationValueTab[0] + (int)(SaturationDoTemperature+0.5) ) * averageVoltage / SaturationDoVoltage;  //calculate the do value, doValue = Voltage / SaturationDoVoltage * SaturationDoValue(with temperature compensation)
+      Serial.print(F("DO Voltage:"));
+      Serial.println(averageVoltage,2);
+      //Serial.println(F("mg/L"));
    }
 
    if(serialDataAvailable() > 0)

@@ -63,8 +63,11 @@ float get_pH()
       pHArray[pHArrayIndex++]=analogRead(SensorPin);
       if(pHArrayIndex==ArrayLenth)pHArrayIndex=0;
       voltage = avergearray(pHArray, ArrayLenth)*5.0/1024;
+      Serial.print("PH Voltage:");
+      Serial.println(voltage,2);
      // Serial.println(voltage);
-      pHValue = -5.6965*voltage+Offset;
+      //pHValue = -5.6965*voltage+Offset; //temp palok 28 apr
+      pHValue = voltage;
       samplingTime=millis();
   }
   return pHValue;

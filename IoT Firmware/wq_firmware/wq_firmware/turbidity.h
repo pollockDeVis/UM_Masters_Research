@@ -80,9 +80,12 @@ float get_turbidity_NTU()
 //  for(counter = 0; counter < 2000; counter++)
 //  {
   voltage = get_turbidity_volt();
+  Serial.print(F("TURB Voltage:"));
+  Serial.println(voltage,2);
 //  turbidity += (-1120.4*(voltage)*(voltage) + 5742.3*(voltage) -4352.9 + 480.0);
 //  }
-turbidity = -7.97*voltage + 33.17;
+//turbidity = -7.97*voltage + 33.17; //temp palok 28 apr
+turbidity = voltage;
 if(turbidity < 0) turbidity = 0;
   return turbidity; //turbidity/2000.0;
 }
